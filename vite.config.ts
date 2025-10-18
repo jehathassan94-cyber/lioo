@@ -1,4 +1,3 @@
-// vite.config.ts
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -6,10 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      // ***** أضف هذا السطر *****
-      base: '/liioo/', 
-      // ************************
-
+      // **********************************
+      // **الخطوة الحاسمة لحل مشكلة الشاشة السوداء**
+      base: '/liioo/', // اسم المستودع الخاص بك
+      // **********************************
+      
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -23,7 +23,12 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
+      },
+      // **********************************
+      // **لتأكيد اسم مجلد النشر**
+      build: {
+          outDir: 'dist' 
       }
-      // إذا كان لديك خيار build: { outDir: 'docs' } يمكنك حذفه الآن
+      // **********************************
     };
 });
