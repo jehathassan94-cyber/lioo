@@ -1,3 +1,4 @@
+// vite.config.ts
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -5,6 +6,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      // ***** أضف هذا السطر *****
+      base: '/liioo/', 
+      // ************************
+
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -18,10 +23,7 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      },
-      // أضف هذا السطر فقط
-      build: {
-          outDir: 'docs' // لتغيير اسم مجلد البناء من 'dist' إلى 'docs'
       }
+      // إذا كان لديك خيار build: { outDir: 'docs' } يمكنك حذفه الآن
     };
 });
